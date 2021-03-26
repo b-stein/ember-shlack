@@ -1,0 +1,8 @@
+{{!-- lifecycle method for each element in hbs, not component --}}
+<main class="flex-1 flex flex-col bg-white overflow-hidden channel"
+  {{did-insert this.loadMessages}}
+  {{did-update this.loadMessages @channel}}
+>
+  {{!-- yield helper invokes a callback --}}
+  {{yield this.messages}}
+</main>
