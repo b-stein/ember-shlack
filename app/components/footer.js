@@ -9,14 +9,18 @@ export default class FooterComponent extends Component {
   get isDisabled() {
     return !this.body
   }
-
-  @action
-  handleSubmit(evt) {
-    console.log(evt)
-  }
-
+  
   @action
   updateMessageBody(evt) {
     this.body = evt.target.value;
+  }
+  
+  @action
+  async handleSubmit(evt) {
+    evt.preventDefault();
+
+    //action sent as an arg in the template
+    await this.args.sendMessage(this.body);
+    this.body = '';
   }
 }
